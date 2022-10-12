@@ -16,12 +16,12 @@
   <body>
     <div class="da">
       <!--da container-->
-      <div class="title">
+      <div id="title" class="title">
         <h1>Hangman</h1>
         <p>Find the hidden word - Enter a letter</p>
       </div>
 
-      <div class="game-container">
+      <div id="game-container" class="game-container">
         <svg height="250" width="200" class="figure-container">
           <!--Rod-->
           <line x1="60" y1="20" x2="140" y2="20"></line>
@@ -31,7 +31,13 @@
           <!--Head-->
           <circle class="figure-part" cx="140" cy="70" r="20"></circle>
           <!--body-->
-          <line class="figure-part" x1="140" y1="90" x2="140" y2="150"></line>
+          <line
+            class="xos figure-part"
+            x1="140"
+            y1="90"
+            x2="140"
+            y2="150"
+          ></line>
           <!--Arms-->
           <line class="figure-part" x1="140" y1="120" x2="120" y2="100"></line>
           <line class="figure-part" x1="140" y1="120" x2="160" y2="100"></line>
@@ -41,7 +47,7 @@
         </svg>
 
         <div class="wrong-letters-container">
-          <div id="wrong-letters"></div>
+          <div class="wrong-letters" id="wrong-letters"></div>
         </div>
         <div class="word" id="word"></div>
       </div>
@@ -58,7 +64,9 @@
         <p>You have already entered this letter</p>
       </div>
     </div>
-
+    <div class="mobile">
+      <p>This game can't run in mobile, sorry 🎭!</p>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>

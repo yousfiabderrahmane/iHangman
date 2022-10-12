@@ -7,7 +7,22 @@ const finalMessage = document.getElementById("final-message");
 
 const figureParts = document.querySelectorAll(".figure-part");
 
-const words = ["application", "programming", "interface", "wizard"];
+const words = [
+  "application",
+  "programming",
+  "interface",
+  "wizard",
+  "dog",
+  "cat",
+  "summer",
+  "water",
+  "festival",
+  "browser",
+  "web",
+  "pencil",
+  "gum",
+  "joyboy",
+];
 
 let selectedWord = words[Math.floor(Math.random() * words.length)];
 console.log(selectedWord);
@@ -28,6 +43,7 @@ ${selectedWord
   const innerWord = wordEl.innerText.replace(/\n/g, ""); //remove roujou3 li satr
   if (innerWord === selectedWord) {
     finalMessage.innerText = `Congratulations ! You won ! 🥀`;
+
     popup.style.display = "flex";
   }
 }
@@ -35,7 +51,7 @@ ${selectedWord
 function updateWrongLettersEl() {
   // display wrong letter
   wrongLettersEl.innerHTML = `
-  ${wrongLetters.length > 0 ? `<p>wrong</p>` : ""}
+  ${wrongLetters.length > 0 ? `<p>Wrong </p>` : ""}
   ${wrongLetters.map((letter) => `<span>${letter}</span>`)}
   `;
   // display figure parts
@@ -49,7 +65,7 @@ function updateWrongLettersEl() {
   });
   //check if lost
   if (wrongLetters.length === figureParts.length) {
-    finalMessage.innerText = `Oh no ! You lost ! 💀`;
+    finalMessage.innerText = `Unfortunately, you lost ! 😪 `;
     popup.style.display = "flex";
   }
 }
@@ -100,5 +116,15 @@ playAgainBtn.addEventListener("click", () => {
   updateWrongLettersEl();
   popup.style.display = "none";
 });
+
+//fade in
+const gameContainer = document.getElementById("game-container");
+const title = document.getElementById("title");
+setTimeout(() => {
+  gameContainer.classList.add("fade");
+}, 350);
+setTimeout(() => {
+  title.classList.add("fade");
+}, 100);
 
 displayWord();

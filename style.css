@@ -3,7 +3,13 @@
   box-sizing: border-box;
 }
 body {
-  background-color: #34495e;
+  background: linear-gradient(
+    112.1deg,
+    rgb(32, 38, 57) 11.4%,
+    rgb(63, 76, 119) 70.2%
+  );
+  height: 100vh;
+
   color: white;
   overflow: hidden;
 }
@@ -15,14 +21,33 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 12px;
-  gap: 50px;
+  gap: 100px;
+}
+.title {
+  text-align: center;
+  opacity: 0;
+  transition: all 1.5s;
+}
+.title h1 {
+  font-size: 35px;
+  color: #2980b9;
+  text-shadow: 2px 2px rgba(255, 255, 255, 0.1);
+}
+.title p {
+  font-size: 25px;
+  text-shadow: 2px 2px rgba(41, 128, 185, 0.5);
 }
 .game-container {
+  opacity: 0;
+  transition: all 1.5s;
   padding: 20px 30px;
   margin: auto;
   height: 373px;
   width: 851px;
   position: relative;
+  border-left: 2px solid #2980b9;
+  border-right: 2px solid #2980b9;
+  border-radius: 25px;
 }
 .wrong-letters-container {
   position: absolute;
@@ -32,8 +57,15 @@ body {
   flex-direction: column;
   text-align: right;
 }
+circle {
+  fill: gold;
+}
 .wrong-letters-container p {
   margin: 0 0 5px;
+  color: #2980b9;
+  padding: 5px;
+  border: 2px dashed #2980b9;
+  border-radius: 5px;
 }
 .wrong-letters-container span {
   font-size: 24px;
@@ -60,6 +92,25 @@ body {
   stroke: white;
   stroke-width: 4px;
   stroke-linecap: round;
+  filter: drop-shadow(0 0 2px gold);
+  animation: shadow 2s linear infinite;
+}
+@keyframes shadow {
+  0% {
+    filter: drop-shadow(0 0 2px gold);
+  }
+  25% {
+    filter: drop-shadow(0 0 5px gold);
+  }
+  50% {
+    filter: drop-shadow(0 0 10px gold);
+  }
+  75% {
+    filter: drop-shadow(0 0 5px gold);
+  }
+  100% {
+    filter: drop-shadow(0 0 2px gold);
+  }
 }
 .figure-part {
   display: none;
@@ -76,10 +127,18 @@ body {
   align-items: center;
   justify-content: center;
 }
+.fade {
+  opacity: 1;
+}
 
 .popup {
-  background: #2980b9;
-  border-radius: 5px;
+  background: linear-gradient(
+    112.1deg,
+    rgb(32, 38, 57) 11.4%,
+    rgb(63, 76, 119) 70.2%
+  );
+  border: 5px solid #2980b9;
+  border-radius: 25px;
   box-shadow: 0 15px 10px 3px rgba(0, 0, 0, 0.3);
   text-align: center;
   padding: 10px 30px;
@@ -88,7 +147,8 @@ body {
   cursor: pointer;
   background-color: white;
   color: #2980b9;
-  border: 0;
+  border: 2px solid #2980b9;
+  border-radius: 10px;
   margin-top: 20px;
   padding: 12px 20px;
   border-radius: 4px;
@@ -111,4 +171,37 @@ body {
 
 .notification-container.show {
   transform: translateY(-55px);
+}
+.mobile {
+  display: none;
+}
+@media (max-width: 1000px) {
+  .da {
+    display: none;
+  }
+  .mobile {
+    text-align: center;
+    display: inline-block;
+    font-size: 50px;
+  }
+  body {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+      112.1deg,
+      rgb(32, 38, 57) 11.4%,
+      rgb(63, 76, 119) 70.2%
+    );
+    height: 100vh;
+
+    color: white;
+    overflow: hidden;
+  }
+}
+@media (max-width: 500px) {
+  .mobile {
+    font-size: 30px;
+  }
 }
