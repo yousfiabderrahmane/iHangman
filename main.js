@@ -5,7 +5,7 @@ const popup = document.getElementById("popup-container");
 const notification = document.getElementById("notification-container");
 const finalMessage = document.getElementById("final-message");
 
-const figurePart = document.querySelectorAll(".figure-part");
+const figureParts = document.querySelectorAll(".figure-part");
 
 const words = ["application", "programming", "interface", "wizard"];
 
@@ -27,13 +27,31 @@ ${selectedWord
   .join("")}`; // array ------> string
   const innerWord = wordEl.innerText.replace(/\n/g, ""); //remove roujou3 li satr
   if (innerWord === selectedWord) {
-    finalMessage.innerText = `Congratulations ! You won ! 📀`;
+    finalMessage.innerText = `Congratulations ! You won ! 🥀`;
     popup.style.display = "flex";
   }
 }
 // update the wrong letter
 function updateWrongLettersEl() {
-  console.log("wrong!!");
+  // display wrong letter
+  wrongLettersEl.innerHTML = `
+  ${wrongLetters.length > 0 ? `<p>wrong</p>` : ""}
+  ${wrongLetters.map((letter) => `<span>${letter}</span>`)}
+  `;
+  // display figure parts
+  figureParts.forEach((part, index) => {
+    const errors = wrongLetters.length;
+    if (index < errors) {
+      part.style.display = "block";
+    } else {
+      part.style.display = "none";
+    }
+  });
+  //check if lost
+  if (wrongLetters.length === figureParts.length) {
+    finalMessage.innerText = `Oh no ! You lost ! 💀`;
+    popup.style.display = "flex";
+  }
 }
 
 //show the notification
@@ -68,6 +86,19 @@ window.addEventListener("keydown", (e) => {
       }
     }
   }
+});
+// restart game and play again
+playAgainBtn.addEventListener("click", () => {
+  //empty the arrays
+  correctLetters.splice(0);
+  wrongLetters.splice(0);
+
+  selectedWord = words[Math.floor(Math.random() * words.length)];
+
+  displayWord();
+
+  updateWrongLettersEl();
+  popup.style.display = "none";
 });
 
 displayWord();

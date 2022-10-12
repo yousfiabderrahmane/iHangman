@@ -15,12 +15,13 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 12px;
+  gap: 50px;
 }
 .game-container {
   padding: 20px 30px;
   margin: auto;
-  height: 350px;
-  width: 450px;
+  height: 373px;
+  width: 851px;
   position: relative;
 }
 .wrong-letters-container {
