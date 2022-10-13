@@ -22,6 +22,8 @@ const words = [
   "pencil",
   "gum",
   "joyboy",
+  "ace",
+  "luffy",
 ];
 
 let selectedWord = words[Math.floor(Math.random() * words.length)];
